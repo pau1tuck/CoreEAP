@@ -16,12 +16,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'corsheaders',
     'server',
     'core'
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +59,15 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+AUTH_USER_MODEL = 'users.User'
+USERNAME_FIELD = 'email'
+AUTHENTICATION_METHOD = 'email'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+UNIQUE_EMAIL = True
+ACCOUNT_UNIQUE_EMAIL = True
+EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = True
 
 AUTH_PASSWORD_VALIDATORS = [
     {
